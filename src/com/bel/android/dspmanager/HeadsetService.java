@@ -215,13 +215,13 @@ public class HeadsetService extends Service {
 		{
 			/* Equalizer state is in a single string preference with all values separated by ; */
 			equalizer.setEnabled(preferences.getBoolean("dsp.tone.enable", false));
-			String[] levels = preferences.getString("dsp.tone.eq.custom", "0;0;0;0;0").split(";");
+			String[] levels = preferences.getString("dsp.tone.eq.custom", "-10;-10;-10;-10;-10;-10").split(";");
 			for (short i = 0; i < levels.length; i ++) {
 				equalizer.setBandLevel(i, (short) (Float.valueOf(levels[i]) * 100));
 			}
 
 			/* Send custom loudness instruction. */
-			short loudness = Short.valueOf(preferences.getString("dsp.tone.loudness", "10000"));
+			short loudness = Short.valueOf(preferences.getString("dsp.tone.loudness", "8000"));
 			try {
 				Method setParameter = AudioEffect.class.getMethod("setParameter", byte[].class, byte[].class);
 				setParameter.invoke(equalizer, new byte[] { (byte) (1000 & 0xff), (byte) (1000 >> 8), 0, 0, (byte) (loudness & 0xff), (byte) (loudness >> 8) }, new byte[] { 0, 0, 0, 0 });

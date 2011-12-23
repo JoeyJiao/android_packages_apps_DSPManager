@@ -18,8 +18,8 @@ import com.bel.android.dspmanager.R;
 
 public class EqualizerPreference extends DialogPreference {
 	protected EqualizerSurface listEqualizer, dialogEqualizer;
-	private float[] levels = new float[6];
-	private float[] initialLevels = new float[6];
+	private float[] levels = new float[]{EqualizerSurface.MIN_DB,EqualizerSurface.MIN_DB,EqualizerSurface.MIN_DB,EqualizerSurface.MIN_DB,EqualizerSurface.MIN_DB,EqualizerSurface.MIN_DB};
+	private float[] initialLevels = new float[]{EqualizerSurface.MIN_DB,EqualizerSurface.MIN_DB,EqualizerSurface.MIN_DB,EqualizerSurface.MIN_DB,EqualizerSurface.MIN_DB,EqualizerSurface.MIN_DB};
 
 	/* Little hack used to counting showed dialogs and prevent rollbacking
 	   preference, while dialog closed by system (in case when screen orientation

@@ -180,7 +180,7 @@ public class EqualizerSurface extends SurfaceView {
 			float freq = 15.625f * (float) Math.pow(4, i);
 			float x = projectX(freq) * width;
 			float y = projectY(levels[i]) * height;
-			canvas.drawLine(x, height/2, x, y, green);
+			canvas.drawLine(x, height*MAX_DB/(MAX_DB-MIN_DB), x, y, green);
 			canvas.drawText(String.format("%1.1f", Math.abs(levels[i])), x, height/2, whiteCentered);
 		}
 	}
